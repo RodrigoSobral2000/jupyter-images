@@ -30,6 +30,9 @@ RUN dnf install -y \
     dnf clean all && \
     rm -rf /var/cache/dnf
 
+# Install UV package manager for Python (faster that pip)
+RUN HOME=/home/${NB_USER} curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Install and configure SwanCustomEnvironments extension
 RUN pip install --no-deps --no-cache-dir \
     swancustomenvironments==0.0.12
